@@ -1,0 +1,71 @@
+.card-hover {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: scale(1.03); 
+  z-index: 10; 
+}
+
+.card-hover .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.card-hover:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-hover .card-overlay button {
+  margin: 8px 0;
+  width: 80%;
+  max-width: 200px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.card-hover .card-overlay button:disabled {
+  cursor: default;
+  opacity: 0.6;
+  background-color: #28a745 !important; 
+}
+
+.card-hover .card-overlay button.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+}
+
+.card-hover .card-overlay button.btn-primary:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.card-hover .card-overlay button.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: white;
+}
+
+.card-hover .card-overlay button.btn-success:hover:not(:disabled) {
+  background-color: #1e7e34;
+}

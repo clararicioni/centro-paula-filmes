@@ -1,0 +1,8 @@
+.card-overlay {
+  pointer-events: none;
+}
+.card-overlay:hover,
+.card:hover .card-overlay {
+  opacity: 1 !important;
+  pointer-events: all;
+}

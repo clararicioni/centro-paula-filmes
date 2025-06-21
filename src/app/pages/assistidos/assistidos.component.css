@@ -1,0 +1,7 @@
+.card.position-relative:hover .card-overlay {
+  opacity: 1 !important;
+}
+.card {
+  background-color: transparent !important;
+  border: none; 
+}
