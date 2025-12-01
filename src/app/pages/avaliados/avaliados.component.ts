@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FilmesListaService } from '../../services/filmes-lista.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-avaliados',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class AvaliadosComponent {
   avaliados: any[] = [];
 
-  constructor(private listaService: FilmesListaService) { }
+  constructor(private listaService: FilmesListaService, public router: Router) { }
 
   ngOnInit() {
     this.avaliados = this.listaService.getAvaliados();

@@ -62,6 +62,7 @@ export class FilmesListaService {
     avaliados = avaliados.filter(f => f.id !== filme.id);
     avaliados.push(filmeAvaliado);
     localStorage.setItem(this.avaliadosKey, JSON.stringify(avaliados));
+    alert(`Você está avaliando o filme "${filme.title}" com ${nota}/5 estrelas.`);
   }
 
   salvarAvaliados() {
@@ -92,11 +93,12 @@ export class FilmesListaService {
   }
 
   atualizarAvaliacao(filme: any, novaNota: number): void {
-  let avaliados = this.getAvaliados();
-  const index = avaliados.findIndex(f => f.id === filme.id);
-  if (index !== -1) {
-    avaliados[index].avaliacao = novaNota;
-    localStorage.setItem(this.avaliadosKey, JSON.stringify(avaliados));
+    let avaliados = this.getAvaliados();
+    const index = avaliados.findIndex(f => f.id === filme.id);
+    if (index !== -1) {
+      avaliados[index].avaliacao = novaNota;
+      localStorage.setItem(this.avaliadosKey, JSON.stringify(avaliados));
+      alert(`Você atualizou a avaliação do filme "${filme.title}" com ${novaNota}/5 estrelas.`);
+    }
   }
-}
 }

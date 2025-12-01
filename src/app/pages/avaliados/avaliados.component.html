@@ -1,18 +1,30 @@
-<div class="container" style="margin-top: 150px;">
+<div class="container">
+    <button class="btn-voltar mb-4" (click)="router.navigate(['/home'])">
+    ⬅ Voltar
+    </button>
+
     <h1 class="mb-4">Filmes Avaliados</h1>
+
+    <div *ngIf="avaliados.length === 0" class="text-center mt-5">
+        <p>Você ainda não avaliou nenhum filme.</p>
+    </div>
     <div class="row">
         <div class="col-md-3" *ngFor="let filme of avaliados">
-            <div class="card mb-4 position-relative overflow-hidden">
+            <div class="card mb-4 position-relative">
+
                 <img [src]="'https://image.tmdb.org/t/p/w300' + filme.poster_path" class="card-img-top"
                     alt="{{ filme.title }}" />
+
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ filme.title }}</h5>
 
                     <div class="d-flex justify-content-center gap-1 mb-2">
                         <ng-container *ngFor="let estrela of [1,2,3,4,5]">
-                            <span (click)="editarAvaliacao(filme, estrela)" style="cursor: pointer; font-size: 1.5rem;"
+                            <span class="rating-star" (click)="editarAvaliacao(filme, estrela)"
                                 [style.color]="estrela <= filme.avaliacao ? 'gold' : 'lightgray'"
-                                title="Dar {{ estrela }} estrela(s)">★</span>
+                                title="Dar {{ estrela }} estrela(s)">
+                                ★
+                            </span>
                         </ng-container>
                     </div>
 
@@ -20,6 +32,7 @@
                         Remover
                     </button>
                 </div>
+
             </div>
         </div>
     </div>

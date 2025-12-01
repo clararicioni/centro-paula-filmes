@@ -4,6 +4,7 @@ import { TmdbService } from '../../services/tmdb.service';
 import { FilmesListaService } from '../../services/filmes-lista.service';
 import { PesquisaService } from '../../services/pesquisa.service';
 import { debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filmes',
@@ -20,7 +21,8 @@ export class FilmesComponent implements OnInit {
   constructor(
     private tmdbService: TmdbService,
     private listaService: FilmesListaService,
-    private pesquisaService: PesquisaService
+    private pesquisaService: PesquisaService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {

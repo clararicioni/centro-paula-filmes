@@ -12,7 +12,7 @@ import { FilmesListaService } from '../../services/filmes-lista.service';
 export class AssistidosComponent implements OnInit {
   assistidos: any[] = [];
 
-  constructor(private listaService: FilmesListaService) { }
+  constructor(private listaService: FilmesListaService, public router: Router) { }
 
   ngOnInit() {
     this.assistidos = this.listaService.getAssistidos();
