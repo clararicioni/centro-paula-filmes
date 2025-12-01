@@ -1,12 +1,18 @@
-<div class="container" style="margin-top: 150px;">
+<div class="container">
+    <button class="btn-voltar mb-4" (click)="router.navigate(['/home'])">
+    ⬅ Voltar
+    </button>
+
     <h1 class="mb-4">Filmes Populares</h1>
 
     <div class="row rounded-4">
         <div *ngFor="let filme of filmes" class="rounded-4 col-6 col-md-3 mb-4">
-            <div class="rounded-4 card h-100 position-relative">
+            <div class="rounded-4 card-hover h-100 position-relative">
 
-                <img [src]="'https://image.tmdb.org/t/p/w300' + filme.poster_path" class="rounded-4 card-img-top"
+                <img [src]="'https://image.tmdb.org/t/p/w300' + filme.poster_path"
+                    class="card-img-top"
                     alt="{{ filme.title }}" *ngIf="filme.poster_path; else noImage" />
+
                 <ng-template #noImage>
                     <div class="rounded-4 card-img-top bg-secondary text-white d-flex align-items-center justify-content-center"
                         style="height: 450px;">
@@ -14,27 +20,29 @@
                     </div>
                 </ng-template>
 
-                <div class="rounded-4 card-body">
+                <div class="rounded-4 card-body p-4">
                     <h5 class="card-title">{{ filme.title }}</h5>
                     <p class="card-text">{{ filme.release_date | date }}</p>
                 </div>
 
-                <div class="rounded-4 card-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
-                    style="background: rgba(0,0,0,0.7); opacity: 0; transition: opacity 0.3s;"
-                    (mouseenter)="showOverlay($event)" (mouseleave)="hideOverlay($event)">
-                    <button class="btn btn-success mb-2" (click)="adicionarAssistidos(filme)"
+                <div class="rounded-4 card-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                    <button class="btn btn-success mb-2"
+                        (click)="adicionarAssistidos(filme)"
                         [disabled]="isAssistido(filme)">
                         {{ isAssistido(filme) ? 'Assistido' : '+ Assistido' }}
                     </button>
-                    <button class="btn btn-primary" (click)="adicionarQueroAssistir(filme)"
+
+                    <button class="btn btn-primary"
+                        (click)="adicionarQueroAssistir(filme)"
                         [disabled]="isQueroAssistir(filme)">
                         {{ isQueroAssistir(filme) ? 'Na Lista' : '+ Quero Assistir' }}
                     </button>
                 </div>
+
             </div>
         </div>
     </div>
-    
+
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             <li class="page-item" [class.disabled]="currentPage === 1">
@@ -42,9 +50,13 @@
                     Anterior
                 </button>
             </li>
+
             <li class="page-item disabled">
-                <span class="page-link">Página {{ currentPage }} de {{ totalPages }}</span>
+                <span class="page-link">
+                    Página {{ currentPage }} de {{ totalPages }}
+                </span>
             </li>
+
             <li class="page-item" [class.disabled]="currentPage === totalPages">
                 <button class="page-link" (click)="nextPage()" [disabled]="currentPage === totalPages">
                     Próxima

@@ -1,0 +1,60 @@
+.home-container {
+  padding: 100px 20px 40px;
+  min-height: 100vh;
+  justify-content: flex-start;
+}
+
+.home-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  color: red;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.35);
+}
+
+.home-btn {
+  width: 80%;
+  max-width: 420px;
+  padding: 14px 24px;
+  background: white;
+  color: red;
+  border-radius: 14px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  cursor: pointer;
+}
+
+.home-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: #f6e9e9;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.home-btn:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 576px) {
+  .home-container {
+    padding-top: 120px;
+  }
+
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .home-btn {
+    font-size: 1.05rem;
+    padding: 12px 20px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .home-title {
+    font-size: 2rem;
+  }
+}

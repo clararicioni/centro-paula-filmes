@@ -1,31 +1,44 @@
-<div class="container" style="margin-top: 150px;">
-  <h1 class="mb-4">Filmes Assistidos</h1>
-  <div class="row">
-    <div class="col-md-3" *ngFor="let filme of assistidos">
-      <div class="card mb-4 position-relative overflow-hidden">
+<div class="container">
+  <button class="btn-voltar mb-4" (click)="router.navigate(['/home'])">
+    ⬅ Voltar
+  </button>
 
-        <img [src]="'https://image.tmdb.org/t/p/w300' + filme.poster_path" class="card-img-top"
+  <h1 class="mb-4">Filmes Assistidos</h1>
+
+  <div *ngIf="assistidos.length === 0" class="text-center mt-5">
+    <p>Você ainda não marcou nenhum filme como assistido.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-6 col-md-3 mb-4" *ngFor="let filme of assistidos">
+      <div class="card-hover h-100 position-relative">
+
+        <img
+          [src]="'https://image.tmdb.org/t/p/w300' + filme.poster_path"
+          class="card-img-top"
           alt="{{ filme.title }}" />
 
-        <div class="card-body">
+        <div class="card-body p-4 text-center">
           <h5 class="card-title">{{ filme.title }}</h5>
         </div>
 
-        <div
-          class="card-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center gap-3"
-          style="background: rgba(0,0,0,0.7); opacity: 0; transition: opacity 0.3s;" (mouseenter)="showOverlay($event)"
-          (mouseleave)="hideOverlay($event)">
+        <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 
+                    d-flex flex-column justify-content-center align-items-center gap-3">
 
-          <div class="d-flex gap-2" style="background: transparent;">
+          <div class="rating-container d-flex gap-2">
             <ng-container *ngFor="let estrela of [1,2,3,4,5]">
-              <span style="background: transparent; color: lightgray; cursor: pointer; font-size: 2rem;" (click)="avaliar(filme, estrela)"
-                title="Avaliar {{ estrela }} estrela(s)">★</span>
+              <span class="rating-star"
+                    (click)="avaliar(filme, estrela)">
+                ★
+              </span>
             </ng-container>
           </div>
 
-          <button class="btn btn-danger" (click)="removerAssistido(filme)">
+          <button class="btn btn-danger"
+                  (click)="removerAssistido(filme)">
             Remover
           </button>
+
         </div>
 
       </div>

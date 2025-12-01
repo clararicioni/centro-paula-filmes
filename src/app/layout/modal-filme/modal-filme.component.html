@@ -1,20 +1,41 @@
 <div class="modal-backdrop fade show" *ngIf="filme"></div>
 
-<div class="modal d-block rounded" tabindex="-1" *ngIf="filme" style="background: rgba(0, 0, 0, 0.5);">
-  <div class="modal-dialog modal-dialog-centered rounded">
-    <div class="modal-content rounded">
+<div class="modal d-block" tabindex="-1" *ngIf="filme" style="background: rgba(0, 0, 0, 0.6);">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-3">
+
       <div class="modal-header">
         <h5 class="modal-title">{{ filme.title }}</h5>
         <button type="button" class="btn-close" (click)="fechar()"></button>
       </div>
+
       <div class="modal-body text-center">
-        <img
-          [src]="'https://image.tmdb.org/t/p/w300' + filme.poster_path"
+
+        <!-- Poster -->
+        <img 
+          [src]="'https://image.tmdb.org/t/p/w500' + filme.poster_path" 
           alt="{{ filme.title }}"
-          class="img-fluid mb-3"
-          style="max-height: 400px;"
+          class="img-fluid mb-3 mx-auto d-block poster-img"
         />
-        <p>{{ filme.overview }}</p>
+
+        <p class="text-start px-2">{{ filme.overview }}</p>
+
+        <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+          <button 
+            class="btn btn-success px-4"
+            (click)="adicionarAssistidos(filme)" 
+            [disabled]="isAssistido(filme)">
+            {{ isAssistido(filme) ? 'Assistido' : '+ Assistido' }}
+          </button>
+
+          <button 
+            class="btn btn-primary px-4"
+            (click)="adicionarQueroAssistir(filme)" 
+            [disabled]="isQueroAssistir(filme)">
+            {{ isQueroAssistir(filme) ? 'Na Lista' : '+ Quero Assistir' }}
+          </button>
+        </div>
+
       </div>
     </div>
   </div>

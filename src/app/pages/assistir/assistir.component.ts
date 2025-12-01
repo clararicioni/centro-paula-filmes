@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmesListaService } from '../../services/filmes-lista.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assistir',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class AssistirComponent implements OnInit{
   queroAssistir: any[] = [];
 
-  constructor(private listaService: FilmesListaService) {}
+  constructor(private listaService: FilmesListaService, public router: Router) {}
 
   ngOnInit(): void {
     this.atualizarLista();
