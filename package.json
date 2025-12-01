@@ -2,6 +2,9 @@
   "name": "centro-paula-filmes",
   "version": "0.0.0",
   "scripts": {
+    "prebuild": "ts-node set-env.ts",
+    "build:ssr": "npm run prebuild && ng build --configuration production && ng run centro-paula-filmes:server:production",
+    "serve:ssr": "node dist/centro-paula-filmes/server/main.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

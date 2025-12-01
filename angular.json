@@ -40,6 +40,9 @@
           },
           "configurations": {
             "production": {
+              "extraEnv": {
+                "NG_APP_API_KEY": "API_KEY"
+              },
               "budgets": [
                 {
                   "type": "initial",
