@@ -1,7 +1,6 @@
-import { writeFileSync } from 'fs';
+const { writeFileSync } = require('fs');
 
 const targetPath = './src/environments/environment.prod.ts';
-
 const apiKey = process.env['NG_APP_API_KEY'];
 
 if (!apiKey) {
